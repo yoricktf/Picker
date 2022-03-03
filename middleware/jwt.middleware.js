@@ -9,7 +9,7 @@ const getTokenFromHeaders = req => {
 }
 
 const isAuthenticated = jwt({
-  secret: process.env.JWT_SECRET,
+  secret: process.env.TOKEN_SECRET,
   algorithms: ['HS256'],
   requestProperty: 'payload',
   getToken: getTokenFromHeaders

@@ -65,7 +65,7 @@ router.post('/login', (req, res, next) => {
         // create the json web token
         const authToken = jwt.sign(
           payload,
-          process.env.JWT_SECRET,
+          process.env.TOKEN_SECRET,
           { algorithm: 'HS256', expiresIn: '12h' }
         )
         res.status(200).json({ authToken })
