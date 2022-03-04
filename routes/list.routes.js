@@ -12,21 +12,14 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/new', (req, res, next) => {
-  const { name, description, public } = req.body
+  const { listName, listDescription, isPublic, itemsArray } = req.body
 
-  List.create({ name, description, public })
+  List.create({ listName, listDescription, isPublic, itemsArray })
     .then(list => {
 
 
-
-
-
-      Item.insertMany()
-        .then()
-
-
-
-
+      // Item.insertMany()
+      //   .then()
 
 
 

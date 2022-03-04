@@ -32,10 +32,11 @@ const Lists = () => {
         <div key={list._id}>
           <h1 >
             <Link to={`/lists/${list._id}`}>
-              {list.name}
+              {list.listName}
             </Link>
           </h1>
-          <h5>{list.description}</h5>
+          <h5>{list.listDescription}</h5>
+
         </div>
       ))}
 
