@@ -26,7 +26,7 @@ const Login = () => {
         verifyStoredToken()
           .then(() => {
             // redirect to projects
-            navigate('/categories')
+            navigate('/Lists')
           })
       })
       .catch(err => {

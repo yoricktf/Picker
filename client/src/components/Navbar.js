@@ -15,6 +15,7 @@ const Navbar = () => {
             <Link to='/categories'>
               <h1>PICKER</h1>
             </Link>
+            <div><p>profile</p></div>
             <button onClick={logoutUser}>Logout</button>
           </>
         ) : (

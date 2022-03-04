@@ -1,7 +1,8 @@
 import './App.css';
 import Login from './pages/Login'
 import Signup from './pages/Signup';
-import Categories from './pages/Categories';
+import Lists from './pages/Lists';
+import NewList from './pages/NewList';
 import NavBar from './components/Navbar';
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute';
@@ -16,14 +17,19 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route
-          path='/categories'
+        <Route path='/lists' element={<Lists />} />
+        <Route path='/lists/new' element={<NewList />} />
+        {/* <Route path='/Lists/:id' element={<Friends />} /> */}
+
+
+        {/* <Route
+          path='/Lists'
           element={
             <ProtectedRoute redirectTo='/'>
-              <Categories />
+              <Lists />
             </ProtectedRoute>
           }
-        />
+        /> */}
 
 
 

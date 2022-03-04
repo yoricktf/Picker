@@ -3,9 +3,9 @@ const { Schema, model } = require('mongoose');
 // TODO: Please make sure you edit the list model to whatever makes sense in this case
 const itemSchema = new Schema(
   {
-    name: String,
-    description: String,
-    picture: String,
+    itemName: String,
+    itemDescription: String,
+    itemPicture: String,
     list: { type: Schema.Types.ObjectId, ref: 'List' },
   },
   {
