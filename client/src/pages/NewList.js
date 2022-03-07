@@ -14,7 +14,7 @@ const NewList = () => {
   const [itemDescription, setItemDescription] = useState('');
   // const [picture, setPicture] = useState('');
   const [itemsArray, setItemsArray] = useState([])
-  const [item, setItem] = useState({})
+  // const [item, setItem] = useState({})
 
 
 
