@@ -17,12 +17,6 @@ router.post('/new', (req, res, next) => {
   List.create({ listName, listDescription, isPublic, itemsArray })
     .then(list => {
 
-
-      // Item.insertMany()
-      //   .then()
-
-
-
       res.status(200).json(list)
     })
     .catch(err => next(err))

@@ -2,31 +2,24 @@ const User = require('../models/User.model')
 const router = require("express").Router();
 
 router.get('/', (req, res, next) => {
-  let email = req.body
-
-  console.log(req.body);
-
-  // User.find(email)
-  //   .then(user => {
-  //     console.log(user)
-  //   })
-
-
-  User.findOne(email)
-    .then(foundUser => {
-      console.log(foundUser);
-      if (foundUser) {
-        // console.log(foundUser)
-        res.status(200).json(foundUser)
-        return
-      }
-      // res.status(400).json('none found')
-      // console.log(foundUser)
+  User.find()
+    .then(user => {
+      res.status(200).json(user)
+      // console.log(user)
     })
     .catch(err => next(err))
 })
 
-
+router.post('/addFriend', (req, res, next) => {
+  const searchResult = req.body.searchResult
+  const currentUserId = req.body.user._id
+  User.findByIdAndUpdate(currentUserId)
+    .then(user => {
+      user.friends.push(searchResult)
+      console.log(user)
+    })
+  // console.log('add friend route triggered')
+})
 
 
 

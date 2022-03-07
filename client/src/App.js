@@ -20,7 +20,8 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/lists' element={<Lists />} />
         <Route path='/lists/new' element={<NewList />} />
-        <Route path='/friends' element={<Friends />} />
+        {/* <Route path='/friends' element={<Friends />} /> */}
+        <Route path='/lists/:id/friends' element={<Friends />} />
 
         {/* <Route path='/Lists/:id' element={<Friends />} /> */}
 

@@ -12,7 +12,7 @@ const Navbar = () => {
         (
           <>
             <button onClick={logoutUser}>back</button>
-            <Link to='/categories'>
+            <Link to='/lists'>
               <h1>PICKER</h1>
             </Link>
             <div><p>profile</p></div>

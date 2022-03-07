@@ -31,7 +31,7 @@ const Lists = () => {
       {lists.map((list) => (
         <div key={list._id}>
           <h1 >
-            <Link to={`/lists/${list._id}`}>
+            <Link to={`/lists/${list._id}/friends`}>
               {list.listName}
             </Link>
           </h1>

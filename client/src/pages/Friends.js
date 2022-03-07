@@ -1,29 +1,65 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/auth'
 
 const Friends = () => {
-  const [mail, setMail] = useState('');
+  const [name, setName] = useState('');
+  const [friends, setFriends] = useState('');
+  const { user } = useContext(AuthContext);
+  let searchResult;
 
   const onChange = (e) => {
-    setMail(e.target.value)
-    console.log(mail);
+    setName(e.target.value)
+  }
 
+
+  const addFriend = e => {
+    console.log(user)
+    // user.friends.push(searchResult);
+    axios.post('/friends/addFriend', { searchResult, user })
+      .then(friend => {
+      })
   }
 
   useEffect(() => {
-    axios.get('/friends', { mail })
-      .then(friends => {
-        // console.log(friends)
-
+    axios.get('/friends')
+      .then(allFriends => {
+        // console.log(allFriends)
+        setFriends(allFriends.data)
       })
       .catch(err => console.log(err))
-  }, [mail])
+  }, [])
+
+  // console.log(friends)
+
+  for (let friend of friends) {
+    if (friend.name === name) {
+      searchResult = friend
+    }
+  }
+  // console.log(searchResult);
+
 
 
   return (
     <>
       <div>Friends</div>
-      <input type="text" value={mail} onChange={onChange} />
+      <input type="text" value={name} onChange={onChange} />
+
+
+      {searchResult ?
+        (
+          <div className="userCard">
+            <h1>{searchResult.name}</h1>
+            <button onClick={addFriend}>add as friend</button>
+          </div>
+
+
+        ) : (
+          <h1></h1>
+        )
+
+      }
     </>
   )
 }
