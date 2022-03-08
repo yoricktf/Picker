@@ -12,7 +12,7 @@ const Lists = () => {
   const getAllLists = () => {
     axios.get('/lists', { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(allLists => {
-        console.log(allLists)
+        // console.log(allLists)
         setLists(allLists.data)
 
       })
