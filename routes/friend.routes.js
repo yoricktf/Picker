@@ -23,6 +23,16 @@ router.post('/user', (req, res, next) => {
 })
 
 
+router.post('/profile', (req, res, next) => {
+  console.log('===============', req.body);
+  User.findById(req.body.user._id)
+    .then(user => {
+      console.log('-------------', user);
+      res.status(200).json(user)
+    })
+})
+
+
 router.post('/addFriend', (req, res, next) => {
   const searchResult = req.body.searchResult
   const currentUserId = req.body.user._id

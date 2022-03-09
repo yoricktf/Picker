@@ -9,3 +9,8 @@ nav {
 button {
   height: 30px;
 }
+
+img {
+  border-radius: 50%;
+  height: 50px;
+}
