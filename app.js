@@ -31,14 +31,14 @@ const authRouter = require("./routes/auth.routes");          //  <== IMPORT
 app.use("/auth", authRouter);                             //  <== ADD
 
 const listRouter = require("./routes/list.routes");
-app.use("/lists", listRouter);      // <== UPDATE  WITH  app.use("/api", isAuthenticated, taskRouter);
+app.use("/lists", isAuthenticated, listRouter);      // <== UPDATE  WITH  app.use("/api", isAuthenticated, taskRouter);
 // app.use("/", isAuthenticated, listRouter);      // <== UPDATE  WITH  app.use("/api", isAuthenticated, taskRouter);
 
 const itemRouter = require("./routes/item.routes");
-app.use("/items", itemRouter);
+app.use("/items", isAuthenticated, itemRouter);
 
 const friendRouter = require("./routes/friend.routes");
-app.use("/friends", friendRouter);
+app.use("/friends", isAuthenticated, friendRouter);
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
