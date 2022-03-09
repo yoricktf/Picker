@@ -25,6 +25,8 @@ app.use("/api", allRoutes);
 // app.use("/api", projectRouter);     // <== UPDATE  WITH  app.use("/api", isAuthenticated, projectRouter);
 
 
+
+
 const authRouter = require("./routes/auth.routes");          //  <== IMPORT
 app.use("/auth", authRouter);                             //  <== ADD
 

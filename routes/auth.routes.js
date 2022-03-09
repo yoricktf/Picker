@@ -3,9 +3,10 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/User.model')
 const jwt = require('jsonwebtoken');
 const { isAuthenticated } = require("../middleware/jwt.middleware");
+const fileUploader = require("../config/cloudinary.config");
 
 router.post('/signup', (req, res, next) => {
-  const { email, password, name } = req.body
+  const { email, password, name, profilePicture } = req.body
   // check if email or name or password are empty
   if (email === '' || password === '' || name === '') {
     res.status(400).json({ message: 'Provide email, password and name' })
@@ -33,10 +34,10 @@ router.post('/signup', (req, res, next) => {
       const salt = bcrypt.genSaltSync();
       const hashedPassword = bcrypt.hashSync(password, salt)
       // create the new user
-      return User.create({ email, password: hashedPassword, name })
+      return User.create({ email, password: hashedPassword, name, profilePicture })
         .then(createdUser => {
-          const { email, name, _id } = createdUser
-          const user = { email, name, _id }
+          const { email, name, _id, profilePicture } = createdUser
+          const user = { email, name, _id, profilePicture }
           res.status(201).json({ user: user })
         })
         .catch(err => {
@@ -45,6 +46,26 @@ router.post('/signup', (req, res, next) => {
         })
     })
 });
+
+
+// ==========CLOUDINARY UPLOAD ROUTE======================
+router.post("/upload", fileUploader.single("profilePicture"), (req, res, next) => {
+  // console.log("file is: ", req.file)
+
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+
+  // Get the URL of the uploaded file and send it as a response.
+  // 'secure_url' can be any name, just make sure you remember to use the same when accessing it on the frontend
+
+  res.json({ secure_url: req.file.path });
+});
+// ==========================================================
+
+
+
 
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body

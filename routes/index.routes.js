@@ -7,8 +7,5 @@ router.get("/", (req, res, next) => {
 // You put the next routes here 👇
 
 
-// router.get("/categories", (req, res, next) => {
-//   res.json("All good in here");
-// });
 
 module.exports = router;

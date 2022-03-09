@@ -1,3 +1,4 @@
+import './Navbar.css';
 import axios from 'axios'
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -29,8 +30,8 @@ const Navbar = () => {
 
             <h1 onClick={resetMatches}>PICKER</h1>
 
-            <div><p>{user.name}</p></div>
-            <button onClick={logoutUser}>Logout</button>
+
+            <button onClick={logoutUser}>{user.name}</button>
           </>
         ) : (
           <>
@@ -39,6 +40,7 @@ const Navbar = () => {
             </Link>
           </>
         )}
+
     </nav>
   )
 }

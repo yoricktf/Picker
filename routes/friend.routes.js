@@ -36,6 +36,15 @@ router.post('/addFriend', (req, res, next) => {
   // console.log('add friend route triggered')
 })
 
+
+
+
+
+
+
+
+
+
 //---------------------------V2 BELOW HERE-------------------------------------------------------------
 
 // router.post('/search', (req, res, next) => {
