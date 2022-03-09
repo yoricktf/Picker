@@ -6,7 +6,6 @@ const Lists = () => {
 
   const [lists, setLists] = useState([])
 
-
   const storedToken = localStorage.getItem('authToken')
 
   const getAllLists = () => {

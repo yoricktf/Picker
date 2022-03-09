@@ -8,12 +8,16 @@ const Friends = () => {
   const [friends, setFriends] = useState('');
   const [usersFriends, setUsersFriends] = useState([]);
   const { user } = useContext(AuthContext);
+  // console.log(user)
   // const storedToken = localStorage.getItem('authToken')
   let searchResult;
   const [allFriends, setAllFriends] = useState([])
 
   const { id } = useParams()
   const listId = id
+
+
+
 
   const onChange = (e) => {
     setName(e.target.value)
@@ -29,6 +33,8 @@ const Friends = () => {
   useEffect(() => {
     currentUser()
   }, [])
+
+
 
   const addFriend = () => {
     // console.log(user)
@@ -54,7 +60,7 @@ const Friends = () => {
     }
   }
   // console.log(allFriends)
-  console.log(listId)
+  // console.log(listId)
   return (
     <>
       <div>Friends</div>
@@ -73,7 +79,7 @@ const Friends = () => {
         {allFriends.map((friend) => (
           <div key={friend._id}>
             <li >
-              <Link to={`/lists/`}>
+              <Link to={`/lists/${listId}/items`}>
                 {friend.name}
               </Link>
             </li>
