@@ -4,6 +4,7 @@ import { AuthContext } from '../context/auth'
 import { Link, useParams } from "react-router-dom";
 
 const Friends = () => {
+
   const [name, setName] = useState('');
   const [friends, setFriends] = useState('');
   const [usersFriends, setUsersFriends] = useState([]);
@@ -75,18 +76,18 @@ const Friends = () => {
           <h1></h1>
         )
       }
-      <ul>
-        {allFriends.map((friend) => (
-          <div key={friend._id}>
-            <li >
-              <Link to={`/lists/${listId}/items`}>
-                {friend.name}
-              </Link>
-            </li>
-          </div>
-        ))}
 
-      </ul>
+      {allFriends.map((friend) => (
+        <div key={friend._id}>
+          <h1 >
+            <Link to={`/lists/${listId}/items`}>
+              {friend.name}
+            </Link>
+          </h1>
+        </div>
+      ))}
+
+
     </>
   )
 }

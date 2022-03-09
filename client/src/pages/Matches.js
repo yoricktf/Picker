@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../context/auth'
-
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Matches = () => {
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate()
 
   const [matchedItems, setMatchedItems] = useState([])
 
@@ -34,12 +34,20 @@ const Matches = () => {
       })
   }
 
+  const resetMatches = () => {
+    console.log('object');
+
+    axios.post('/items/resetMatches', { user })
+      .then(response => {
+      })
+    navigate('/lists')
+  }
 
   useEffect(() => {
     checkForMatches()
   }, [user])
 
-  console.log(matchedItems);
+
 
 
   return (
@@ -50,6 +58,7 @@ const Matches = () => {
           <h1>{match.itemName}</h1>
         </div>
       ))}
+      <button onClick={resetMatches}>restart</button>
     </>
 
   )

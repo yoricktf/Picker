@@ -26,11 +26,11 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/listItems', (req, res, next) => {
-  console.log("here is the body------------", req.body)
+
   List.findById(req.body.id)
     .populate('itemsArray')
     .then(list => {
-      console.log('list returned after search--------------', list);
+
       res.status(200).json(list)
     })
 })
@@ -40,9 +40,6 @@ router.post('/listItems', (req, res, next) => {
 
 router.post('/liked', (req, res, next) => {
   const { id, user } = req.body
-  console.log("body is ", req.body)
-  console.log("item id is ", id)
-  console.log("user is ", user)
   User.findByIdAndUpdate(user._id, { $push: { matches: id } }, { new: true })
     .then(currentUser => {
       console.log('currentuser', currentUser)
@@ -67,6 +64,25 @@ router.post('/matches', (req, res, next) => {
       res.json(user)
     })
 })
+
+router.post('/resetMatches', (req, res, next) => {
+  const { user } = req.body
+  // User.findByIdAndUpdate(user._id, { $pullAll: { matches } },)
+  User.findByIdAndUpdate(user._id, { $set: { matches: [] } })
+    .then(user => {
+
+    })
+})
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
