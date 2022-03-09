@@ -3,13 +3,18 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 const Lists = () => {
+  // ----------------------------------security stuff------------------
+  const storedToken = localStorage.getItem('authToken')
+  const security = { headers: { Authorization: `Bearer ${storedToken}` } }
+  console.log(security)
+  // --------------------------------------------------------------------
 
   const [lists, setLists] = useState([])
 
-  const storedToken = localStorage.getItem('authToken')
+
 
   const getAllLists = () => {
-    axios.get('/lists', { headers: { Authorization: `Bearer ${storedToken}` } })
+    axios.get('/lists', security)
       .then(allLists => {
         // console.log(allLists)
         setLists(allLists.data)

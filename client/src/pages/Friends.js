@@ -4,7 +4,11 @@ import { AuthContext } from '../context/auth'
 import { Link, useParams } from "react-router-dom";
 
 const Friends = () => {
-
+  // ----------------------------------security stuff------------------
+  const storedToken = localStorage.getItem('authToken')
+  const security = { headers: { Authorization: `Bearer ${storedToken}` } }
+  console.log(security)
+  // --------------------------------------------------------------------
   const [name, setName] = useState('');
   const [friends, setFriends] = useState('');
   const [usersFriends, setUsersFriends] = useState([]);
@@ -25,7 +29,7 @@ const Friends = () => {
   }
 
   const currentUser = () => {
-    axios.post('/friends/user', user)
+    axios.post('/friends/user', user, security)
       .then(response => {
         // console.log(response.data);
         setAllFriends(response.data)
@@ -39,7 +43,7 @@ const Friends = () => {
 
   const addFriend = () => {
     // console.log(user)
-    axios.post('/friends/addFriend', { searchResult, user })
+    axios.post('/friends/addFriend', { searchResult, user }, security)
       .then(usersFriends => {
         // console.log(updatedUser)
         setUsersFriends(usersFriends.data)
@@ -47,7 +51,7 @@ const Friends = () => {
   }
 
   useEffect(() => {
-    axios.get('/friends')
+    axios.get('/friends', security)
       .then(allFriends => {
         // console.log(allFriends)
         setFriends(allFriends.data)

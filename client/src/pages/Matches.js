@@ -4,6 +4,11 @@ import { AuthContext } from '../context/auth'
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Matches = () => {
+  // ----------------------------------security stuff------------------
+  const storedToken = localStorage.getItem('authToken')
+  const security = { headers: { Authorization: `Bearer ${storedToken}` } }
+  console.log(security)
+  // --------------------------------------------------------------------
   const { user } = useContext(AuthContext);
   const navigate = useNavigate()
 
@@ -12,7 +17,7 @@ const Matches = () => {
 
   const checkForMatches = () => {
     console.log('checking for matches')
-    axios.post('/items/matches', { user })
+    axios.post('/items/matches', { user }, security)
       .then(user => {
 
         let userMatches = user.data.matches
@@ -37,7 +42,7 @@ const Matches = () => {
   const resetMatches = () => {
     console.log('object');
 
-    axios.post('/items/resetMatches', { user })
+    axios.post('/items/resetMatches', { user }, security)
       .then(response => {
       })
     navigate('/lists')

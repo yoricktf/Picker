@@ -5,6 +5,11 @@ import React, { useState } from 'react';
 
 
 const NewList = () => {
+  // ----------------------------------security stuff------------------
+  const storedToken = localStorage.getItem('authToken')
+  const security = { headers: { Authorization: `Bearer ${storedToken}` } }
+  console.log(security)
+  // --------------------------------------------------------------------
 
   const [listName, setListName] = useState('')
   const [listDescription, setListDescription] = useState('')
@@ -19,7 +24,7 @@ const NewList = () => {
 
   const itemNew = event => {
     event.preventDefault()
-    axios.post('/items/new', { itemName, itemDescription })
+    axios.post('/items/new', { itemName, itemDescription }, security)
       .then(response => {
         // console.log(response.data)
         setItemsArray([...itemsArray, response.data])
@@ -34,7 +39,7 @@ const NewList = () => {
 
   const listNew = event => {
     event.preventDefault()
-    axios.post('/lists/new', { listName, listDescription, itemsArray })
+    axios.post('/lists/new', { listName, listDescription, itemsArray }, security)
       .then(response => {
         console.log(response)
       })
