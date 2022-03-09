@@ -1,6 +1,9 @@
 const Item = require('../models/Item.model')
 const User = require('../models/User.model')
+const List = require('../models/List.model')
 const router = require("express").Router();
+
+
 
 router.post('/new', (req, res, next) => {
   const { itemName, itemDescription, itemPicture } = req.body
@@ -11,13 +14,29 @@ router.post('/new', (req, res, next) => {
     .catch(err => next(err))
 })
 
+
+
 router.get('/', (req, res, next) => {
   Item.find()
     .then(items => {
-      // console.log(items)
       res.status(200).json(items)
     })
 })
+
+
+
+router.post('/listItems', (req, res, next) => {
+  console.log("here is the body------------", req.body)
+  List.findById(req.body.id)
+    .populate('itemsArray')
+    .then(list => {
+      console.log('list returned after search--------------', list);
+      res.status(200).json(list)
+    })
+})
+
+
+
 
 router.post('/liked', (req, res, next) => {
   const { id, user } = req.body
@@ -30,9 +49,10 @@ router.post('/liked', (req, res, next) => {
     })
 })
 
+
+
 router.post('/matches', (req, res, next) => {
   const { user } = req.body
-
   User.findById(user._id)
     .populate('matches')
     .populate('friends')
@@ -44,44 +64,7 @@ router.post('/matches', (req, res, next) => {
       }
     })
     .then(user => {
-
       res.json(user)
-
-
-      // userChoice = user.matches
-      // friend = user.friends.toString()
-
-      // User.findById(friend)
-      //   .then(response => {
-
-      //     friendsChoice = response.matches
-
-      //     for (choice of userChoice) {
-      //       if (friendsChoice.includes(choice)) {
-      //         // console.log('match', choice);
-
-
-      //         Item.findById(choice)
-      //           .then(repo => {
-      //             console.log('===================', repo)
-      //             matches.push(repo)
-      //             // console.log("gggggggggggg", matches);
-      //           })
-
-      //         // matches.push(choice)
-
-      //       }
-      //     }
-
-      //     // console.log("---------------------", matches);
-      //     // res.status(200).json(matches)
-
-
-      //   })
-      //   .then(res => {
-      //     console.log("---------------------", matches);
-      //     res.status(200).json(matches)
-      //   })
     })
 })
 

@@ -17,8 +17,6 @@ const NewList = () => {
   // const [item, setItem] = useState({})
 
 
-
-
   const itemNew = event => {
     event.preventDefault()
     axios.post('/items/new', { itemName, itemDescription })
@@ -32,7 +30,6 @@ const NewList = () => {
     setItemDescription('')
     console.log(itemsArray)
   }
-
 
 
   const listNew = event => {
@@ -120,11 +117,7 @@ const NewList = () => {
           ))}
         </>
       </div>
-
-
-
     </>
-
   )
 }
 

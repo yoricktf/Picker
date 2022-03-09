@@ -13,10 +13,8 @@ router.get('/', (req, res, next) => {
 
 router.post('/new', (req, res, next) => {
   const { listName, listDescription, isPublic, itemsArray } = req.body
-
   List.create({ listName, listDescription, isPublic, itemsArray })
     .then(list => {
-
       res.status(200).json(list)
     })
     .catch(err => next(err))

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState, useContext } from 'react'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from '../context/auth'
 
 const Items = () => {
@@ -8,18 +8,39 @@ const Items = () => {
   const [items, setItems] = useState([])
   const navigate = useNavigate()
 
+  const { id } = useParams()
+  const listId = id
 
-  const getAllItems = () => {
-    axios.get('/items')
+  // const getAllItems = () => {
+  //   axios.get('/items')
+  //     .then(response => {
+  //       // console.log(response.data)
+  //       setItems(response.data)
+  //     })
+  // }
+  // useEffect(() => {
+  //   getAllItems()
+  // }, [])
+
+
+  const getListItems = () => {
+    axios.post('/items/listItems', { id: listId })
       .then(response => {
-        // console.log(response.data)
-        setItems(response.data)
+        console.log(response.data.itemsArray)
+        setItems(response.data.itemsArray)
       })
   }
 
   useEffect(() => {
-    getAllItems()
+    getListItems()
   }, [])
+
+
+
+
+
+
+
 
   const addItem = (e) => {
     // const storedToken = localStorage.getItem('authToken')
@@ -28,18 +49,9 @@ const Items = () => {
     axios.post('/items/liked', { id: e.target.value, user })
   }
 
-  // const checkForMatches = () => {
-  //   console.log('checking for matches')
-  //   axios.post('/items/matches', { user })
-  //     .then(matches => {
-  //       console.log(matches.data)
-  //     })
-  // }
-
   const matchesPage = () => {
     navigate(`/matches`)
   }
-
 
   return (
     <>

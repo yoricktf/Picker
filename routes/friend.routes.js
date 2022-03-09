@@ -17,7 +17,7 @@ router.post('/user', (req, res, next) => {
   User.findById(req.body._id)
     .populate('friends')
     .then(user => {
-      console.log('working????????', user.friends)
+      // console.log('working????????', user.friends)
       res.status(200).json(user.friends)
     })
 })
