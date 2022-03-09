@@ -7,7 +7,6 @@ const Matches = () => {
   // ----------------------------------security stuff------------------
   const storedToken = localStorage.getItem('authToken')
   const security = { headers: { Authorization: `Bearer ${storedToken}` } }
-  console.log(security)
   // --------------------------------------------------------------------
   const { user } = useContext(AuthContext);
   const navigate = useNavigate()
@@ -48,9 +47,12 @@ const Matches = () => {
     navigate('/lists')
   }
 
+  // -----------WORKING-------------
   useEffect(() => {
     checkForMatches()
   }, [user])
+  // -----------WORKING-------------
+
 
 
 

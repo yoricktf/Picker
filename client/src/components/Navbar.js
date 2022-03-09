@@ -53,16 +53,8 @@ const Navbar = () => {
         (
           <>
             {/* <button onClick={logoutUser}>back</button> */}
-
             <h1 onClick={resetMatches}>PICKER</h1>
-
-
-
-            <img src={fullUser.profilePicture} alt="" />
-
-
-
-            <button onClick={logoutUser}>{fullUser.name}</button>
+            <img src={fullUser.profilePicture} onClick={logoutUser} alt="" />
           </>
         ) : (
           <>

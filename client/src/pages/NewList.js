@@ -52,34 +52,7 @@ const NewList = () => {
 
   return (
     <>
-      <div>
-        <h1>------------------Add New List------------------</h1>
-        <form onSubmit={listNew}>
-          <label htmlFor="listName">listName: </label>
-          <input
-            id="listName"
-            type="text"
-            value={listName}
-            onChange={e => setListName(e.target.value)}
-          />
-          <label htmlFor="listDescription">listDescription: </label>
-          <input
-            id="listDescription"
-            type="text"
-            value={listDescription}
-            onChange={e => setListDescription(e.target.value)}
-          />
-          {/* <label htmlFor="makePublic">Public: </label>
-        <input
-          id='makePublic'
-          type='checkbox'
-          value={makePublic}
-          onChange={e => setMakePublic(e.target.value)}
-        /> */}
 
-          <button type="submit">Make this list</button>
-        </form>
-      </div>
 
       <div>
         <h1>---------------new item------------------</h1>
@@ -121,6 +94,34 @@ const NewList = () => {
             </div>
           ))}
         </>
+      </div>
+      <div>
+        <h1>------------------Add New List------------------</h1>
+        <form onSubmit={listNew}>
+          <label htmlFor="listName">listName: </label>
+          <input
+            id="listName"
+            type="text"
+            value={listName}
+            onChange={e => setListName(e.target.value)}
+          />
+          <label htmlFor="listDescription">listDescription: </label>
+          <input
+            id="listDescription"
+            type="text"
+            value={listDescription}
+            onChange={e => setListDescription(e.target.value)}
+          />
+          {/* <label htmlFor="makePublic">Public: </label>
+        <input
+          id='makePublic'
+          type='checkbox'
+          value={makePublic}
+          onChange={e => setMakePublic(e.target.value)}
+        /> */}
+
+          <button type="submit">Make this list</button>
+        </form>
       </div>
     </>
   )

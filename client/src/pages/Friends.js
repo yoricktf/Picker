@@ -7,7 +7,6 @@ const Friends = () => {
   // ----------------------------------security stuff------------------
   const storedToken = localStorage.getItem('authToken')
   const security = { headers: { Authorization: `Bearer ${storedToken}` } }
-  console.log(security)
   // --------------------------------------------------------------------
   const [name, setName] = useState('');
   const [friends, setFriends] = useState('');
