@@ -71,7 +71,7 @@ const Friends = () => {
   return (
     <>
       <div>Search for new friends here</div>
-      <input type="text" value={name} onChange={onChange} />
+      <input type="text" className='searchInput' value={name} onChange={onChange} />
       {searchResult ?
         (
 

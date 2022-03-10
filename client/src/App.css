@@ -7,18 +7,19 @@
   /* padding: 10px; */
   box-sizing: border-box;
   color: #000;
-  background-color: rgb(246, 248, 255);
+  background-color: rgb(240, 240, 240);
 }
 
 .form,
 .listCard,
-.friendCard {
-  /* border: 0.5px solid rgb(173, 173, 173); */
+.friendCard,
+.itemCard,
+.possibleFriendCard {
+  border: 0.5px solid rgb(216, 216, 216);
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
-
   box-shadow: 1px 1px 5px rgb(207, 207, 207);
 }
 
@@ -36,6 +37,7 @@ a {
   max-width: 150px;
   height: auto;
   max-height: 150px;
+  border-radius: 10px;
 }
 
 .circleButton {
@@ -63,4 +65,34 @@ a {
 
 .profileName {
   margin: 10px 10px;
+}
+
+button {
+  background-color: white;
+  border: 1px solid rgb(66, 66, 66);
+  padding: 20px;
+  border-radius: 7px;
+  text-align: center;
+  line-height: 0;
+  width: 200px;
+  margin: 10px;
+}
+
+.matchButton {
+  width: 80%;
+  height: 60px;
+  box-shadow: 1px 1px 5px rgb(207, 207, 207);
+}
+
+.matchButton:hover {
+  box-shadow: 1px 1px 15px gold, inset 5px 5px gold, inset -5px -5px gold;
+}
+
+button:hover {
+  box-shadow: inset 5px 5px gold, inset -5px -5px gold;
+}
+
+.searchInput {
+  width: 80%;
+  height: 20px;
 }

@@ -59,7 +59,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to='/'>
-              <h1>PICKER</h1>
+              <h1 className='navText'>PICKER</h1>
             </Link>
           </>
         )}

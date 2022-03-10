@@ -74,23 +74,36 @@ const NewList = () => {
   return (
     <>
       <div>
-        <h1>---------------new item------------------</h1>
-        <form onSubmit={itemNew}>
-          <label htmlFor="itemName">itemName: </label>
-          <input
-            id="itemName"
-            type="text"
-            value={itemName}
-            onChange={e => setItemName(e.target.value)}
-          />
-          <label htmlFor="itemDescription">itemDescription: </label>
-          <input
-            id="itemDescription"
-            type="text"
-            value={itemDescription}
-            onChange={e => setItemDescription(e.target.value)}
-          />
-          <input type="file" onChange={(e) => handleFileUpload(e)} />
+
+        <form className='form' onSubmit={itemNew}>
+          <h1>New Item</h1>
+
+          <div className='formElement'>
+
+            <label htmlFor="itemName">&emsp; &ensp; &ensp;item's Name: </label>
+            <input
+              id="itemName"
+              type="text"
+              value={itemName}
+              onChange={e => setItemName(e.target.value)}
+            />
+          </div>
+
+
+
+          <div className='formElement'>
+            <label htmlFor="itemDescription">item's Description: </label>
+            <input
+              id="itemDescription"
+              type="text"
+              value={itemDescription}
+              onChange={e => setItemDescription(e.target.value)}
+            />
+          </div>
+          <div className='formElement'>
+
+            <input type="file" onChange={(e) => handleFileUpload(e)} />
+          </div>
           {/* <label htmlFor="picture">Picture: </label>
         <input
           id="picture"
@@ -102,36 +115,43 @@ const NewList = () => {
           <button type="submit">add item</button>
         </form>
         <>
-          <div>Items</div>
+
           {itemsArray.map((item) => (
-            <div key={item._id}>
+            <div className='form' key={item._id}>
               <h3 >
 
                 {item.itemName}
 
               </h3>
+              <img src={item.itemPicture} className='itemPicture' alt="" />
               <p>{item.itemDescription}</p>
             </div>
           ))}
         </>
       </div>
       <div>
-        <h1>------------------Add New List------------------</h1>
-        <form onSubmit={listNew}>
-          <label htmlFor="listName">listName: </label>
-          <input
-            id="listName"
-            type="text"
-            value={listName}
-            onChange={e => setListName(e.target.value)}
-          />
-          <label htmlFor="listDescription">listDescription: </label>
-          <input
-            id="listDescription"
-            type="text"
-            value={listDescription}
-            onChange={e => setListDescription(e.target.value)}
-          />
+
+        <form className='form' onSubmit={listNew}>
+          <h1>Add New List</h1>
+          <div className='formElement'>
+            <label htmlFor="listName">&emsp; &ensp; &ensp;List Name: </label>
+            <input
+              id="listName"
+              type="text"
+              value={listName}
+              onChange={e => setListName(e.target.value)}
+            />
+          </div>
+
+          <div className='formElement'>
+            <label htmlFor="listDescription">List Description: </label>
+            <input
+              id="listDescription"
+              type="text"
+              value={listDescription}
+              onChange={e => setListDescription(e.target.value)}
+            />
+          </div>
           {/* <label htmlFor="makePublic">Public: </label>
         <input
           id='makePublic'

@@ -46,14 +46,14 @@ const Items = () => {
   return (
     <>
       {items.map((item) => (
-        <div key={item._id} >
+        <div className='itemCard' key={item._id} >
           <h1>{item.itemName}</h1>
           <img className='itemPicture' src={item.itemPicture} alt="" />
-          <button value={item._id} onClick={addItem}>yes</button>
+          <button value={item._id} onClick={addItem}>Yes</button>
         </div>
       ))}
       {/* <button onClick={checkForMatches}>check for matches</button> */}
-      <button onClick={matchesPage}>check for matches</button>
+      <button className='matchButton' onClick={matchesPage}>check for matches</button>
     </>
   )
 }
