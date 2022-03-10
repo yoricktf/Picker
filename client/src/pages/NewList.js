@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
+import service from "../api/serviceItemPic";
 
 
 
@@ -8,23 +9,19 @@ const NewList = () => {
   // ----------------------------------security stuff------------------
   const storedToken = localStorage.getItem('authToken')
   const security = { headers: { Authorization: `Bearer ${storedToken}` } }
-  console.log(security)
   // --------------------------------------------------------------------
-
   const [listName, setListName] = useState('')
   const [listDescription, setListDescription] = useState('')
   // const [makePublic, setMakePublic] = useState(false)
   const navigate = useNavigate()
   const [itemName, setItemName] = useState('');
   const [itemDescription, setItemDescription] = useState('');
-  // const [picture, setPicture] = useState('');
   const [itemsArray, setItemsArray] = useState([])
-  // const [item, setItem] = useState({})
-
+  const [itemPicture, setItemPicture] = useState("");
 
   const itemNew = event => {
     event.preventDefault()
-    axios.post('/items/new', { itemName, itemDescription }, security)
+    axios.post('/items/new', { itemName, itemDescription, itemPicture }, security)
       .then(response => {
         // console.log(response.data)
         setItemsArray([...itemsArray, response.data])
@@ -32,10 +29,34 @@ const NewList = () => {
       })
       .catch(err => console.log(err))
     setItemName('')
+    setItemPicture('')
     setItemDescription('')
     console.log(itemsArray)
   }
 
+
+  // ======================// ======================// ======================
+
+  const handleFileUpload = e => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("itemPicture", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData)
+      .then(response => {
+        // console.log("response is: ", response);
+        // response carries "secure_url" which we can use to update the state
+        setItemPicture(response.secure_url);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
+  // ======================// ======================// ======================
 
   const listNew = event => {
     event.preventDefault()
@@ -52,8 +73,6 @@ const NewList = () => {
 
   return (
     <>
-
-
       <div>
         <h1>---------------new item------------------</h1>
         <form onSubmit={itemNew}>
@@ -71,6 +90,7 @@ const NewList = () => {
             value={itemDescription}
             onChange={e => setItemDescription(e.target.value)}
           />
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
           {/* <label htmlFor="picture">Picture: </label>
         <input
           id="picture"

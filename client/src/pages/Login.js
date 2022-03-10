@@ -40,12 +40,18 @@ const Login = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email: </label>
-        <input type="text" value={email} onChange={handleEmail} />
-        <label htmlFor="password">Password: </label>
-        <input type="password" value={password} onChange={handlePassword} />
+
+      <form className='form' onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <div className='formElement'>
+          <label htmlFor="email">&emsp;&ensp; Email: </label>
+          <input type="text" value={email} onChange={handleEmail} />
+        </div>
+        <div className='formElement'>
+          <label htmlFor="password">Password: </label>
+          <input type="password" value={password} onChange={handlePassword} />
+        </div>
+
         <button type="submit">Log In</button>
       </form>
 

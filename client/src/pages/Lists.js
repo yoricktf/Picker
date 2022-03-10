@@ -6,7 +6,7 @@ const Lists = () => {
   // ----------------------------------security stuff------------------
   const storedToken = localStorage.getItem('authToken')
   const security = { headers: { Authorization: `Bearer ${storedToken}` } }
-  console.log(security)
+
   // --------------------------------------------------------------------
 
   const [lists, setLists] = useState([])
@@ -31,9 +31,9 @@ const Lists = () => {
 
   return (
     <>
-      <div>Lists</div>
+
       {lists.map((list) => (
-        <div key={list._id}>
+        <div className='listCard' key={list._id}>
           <h1 >
             <Link to={`/lists/${list._id}/friends`}>
               {list.listName}
@@ -44,7 +44,7 @@ const Lists = () => {
         </div>
       ))}
 
-      <Link to={'/lists/new'}>plus</Link>
+      <Link to={'/lists/new'}><div className='circleButton'><h1 className='plus'>+</h1></div></Link>
 
 
 

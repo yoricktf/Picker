@@ -59,16 +59,25 @@ export default function Signup() {
 
   return (
     <>
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email: </label>
-        <input type="text" value={email} onChange={handleEmail} />
-        <label htmlFor="password">Password: </label>
-        <input type="password" value={password} onChange={handlePassword} />
-        <label htmlFor="name">Name: </label>
-        <input type="text" value={name} onChange={handleName} />
 
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
+      <form className='form' onSubmit={handleSubmit}>
+        <h1>Signup</h1>
+        <div className='formElement'>
+          <label htmlFor="email">&emsp;&ensp; Email: </label>
+          <input type="text" value={email} onChange={handleEmail} />
+        </div>
+        <div className='formElement'>
+          <label htmlFor="password">Password: </label>
+          <input type="password" value={password} onChange={handlePassword} />
+        </div>
+        <div className='formElement'>
+          <label htmlFor="name">username: </label>
+          <input type="text" value={name} onChange={handleName} />
+        </div>
+        <div className='formElement'>
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+
 
 
         <button type="submit">Sign Up</button>

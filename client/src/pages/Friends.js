@@ -12,13 +12,10 @@ const Friends = () => {
   const [friends, setFriends] = useState('');
   const [usersFriends, setUsersFriends] = useState([]);
   const { user } = useContext(AuthContext);
-  // console.log(user)
-  // const storedToken = localStorage.getItem('authToken')
-  let searchResult;
-  const [allFriends, setAllFriends] = useState([])
-
+  const [userFriends, setAllUsers] = useState([])
   const { id } = useParams()
   const listId = id
+  let searchResult;
 
 
 
@@ -31,7 +28,7 @@ const Friends = () => {
     axios.post('/friends/user', user, security)
       .then(response => {
         // console.log(response.data);
-        setAllFriends(response.data)
+        setAllUsers(response.data)
       })
   }
   useEffect(() => {
@@ -63,32 +60,52 @@ const Friends = () => {
       searchResult = friend
     }
   }
-  // console.log(allFriends)
-  // console.log(listId)
+
+
+  // <div className="userCard">
+  //   <h1>{searchResult.name}</h1>
+  //   <button onClick={addFriend}>add as friend</button>
+  // </div>
+
+
   return (
     <>
-      <div>Friends</div>
+      <div>Search for new friends here</div>
       <input type="text" value={name} onChange={onChange} />
       {searchResult ?
         (
-          <div className="userCard">
-            <h1>{searchResult.name}</h1>
+
+
+          < div className='possibleFriendCard' >
+            <img className='profilePicture' src={searchResult.profilePicture} alt="" />
+            <h1 className='profileName'>{searchResult.name}</h1>
             <button onClick={addFriend}>add as friend</button>
           </div>
+
+
+
+
+
+
+
+
         ) : (
           <h1></h1>
         )
       }
 
-      {allFriends.map((friend) => (
-        <div key={friend._id}>
-          <h1 >
-            <Link to={`/lists/${listId}/items`}>
-              {friend.name}
-            </Link>
-          </h1>
-        </div>
-      ))}
+      {
+        userFriends.map((friend) => (
+          <div className='friendCard' key={friend._id}>
+            <img className='profilePicture' src={friend.profilePicture} alt="" />
+            <h1 className='profileName'>
+              <Link to={`/lists/${listId}/items`}>
+                {friend.name}
+              </Link>
+            </h1>
+          </div>
+        ))
+      }
 
 
     </>

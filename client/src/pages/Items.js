@@ -7,7 +7,6 @@ const Items = () => {
   // ----------------------------------security stuff------------------
   const storedToken = localStorage.getItem('authToken')
   const security = { headers: { Authorization: `Bearer ${storedToken}` } }
-  console.log(security)
   // --------------------------------------------------------------------
   const { user } = useContext(AuthContext);
   const [items, setItems] = useState([])
@@ -28,7 +27,7 @@ const Items = () => {
     getListItems()
   }, [])
 
-
+  console.log(items);
 
   const addItem = (e) => {
     // const storedToken = localStorage.getItem('authToken')
@@ -49,6 +48,7 @@ const Items = () => {
       {items.map((item) => (
         <div key={item._id} >
           <h1>{item.itemName}</h1>
+          <img className='itemPicture' src={item.itemPicture} alt="" />
           <button value={item._id} onClick={addItem}>yes</button>
         </div>
       ))}

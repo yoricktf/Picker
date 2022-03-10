@@ -2,7 +2,7 @@ const Item = require('../models/Item.model')
 const User = require('../models/User.model')
 const List = require('../models/List.model')
 const router = require("express").Router();
-
+const fileUploader = require("../config/cloudinary.config");
 
 
 router.post('/new', (req, res, next) => {
@@ -38,6 +38,8 @@ router.post('/listItems', (req, res, next) => {
 
 
 
+
+
 router.post('/liked', (req, res, next) => {
   const { id, user } = req.body
   User.findByIdAndUpdate(user._id, { $push: { matches: id } }, { new: true })
@@ -65,6 +67,26 @@ router.post('/matches', (req, res, next) => {
     })
 })
 
+
+// ==========CLOUDINARY UPLOAD ROUTE======================
+router.post("/upload", fileUploader.single("itemPicture"), (req, res, next) => {
+  // console.log("file is: ", req.file)
+
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+
+  // Get the URL of the uploaded file and send it as a response.
+  // 'secure_url' can be any name, just make sure you remember to use the same when accessing it on the frontend
+
+  res.json({ secure_url: req.file.path });
+});
+// ==========================================================
+
+
+
+
 router.post('/resetMatches', (req, res, next) => {
   const { user } = req.body
   // User.findByIdAndUpdate(user._id, { $pullAll: { matches } },)
@@ -73,6 +95,7 @@ router.post('/resetMatches', (req, res, next) => {
 
     })
 })
+
 
 
 

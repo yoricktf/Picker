@@ -9,6 +9,7 @@ const userSchema = new Schema(
     email: { type: String, unique: true, required: true },
     profilePicture: String,
     friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    // pickingWith: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     matches: [{ type: Schema.Types.ObjectId, ref: 'Item' }],
     lists: [{ type: Schema.Types.ObjectId, ref: 'List' }]
   },

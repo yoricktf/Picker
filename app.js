@@ -35,7 +35,7 @@ app.use("/lists", isAuthenticated, listRouter);      // <== UPDATE  WITH  app.us
 // app.use("/", isAuthenticated, listRouter);      // <== UPDATE  WITH  app.use("/api", isAuthenticated, taskRouter);
 
 const itemRouter = require("./routes/item.routes");
-app.use("/items", isAuthenticated, itemRouter);
+app.use("/items", itemRouter);
 
 const friendRouter = require("./routes/friend.routes");
 app.use("/friends", isAuthenticated, friendRouter);
