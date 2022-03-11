@@ -47,13 +47,14 @@ const Items = () => {
     <>
       {items.map((item) => (
         <div className='itemCard' key={item._id} >
-          <h1>{item.itemName}</h1>
+
           <img className='itemPicture' src={item.itemPicture} alt="" />
+          <h1>{item.itemName}</h1>
           <button value={item._id} onClick={addItem}>Yes</button>
         </div>
       ))}
       {/* <button onClick={checkForMatches}>check for matches</button> */}
-      <button className='matchButton' onClick={matchesPage}>check for matches</button>
+      <button className='matchButton' onClick={matchesPage}>CHECK FOR MATCHES</button>
     </>
   )
 }

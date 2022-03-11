@@ -2,7 +2,7 @@
   text-align: center;
   width: 390px;
   margin: 0 auto;
-  box-shadow: 1px 1px 5px rgb(207, 207, 207);
+  box-shadow: 1px 1px 5px rgb(207, 207, 207), -1px -1px 5px rgb(207, 207, 207);
   height: 100vh;
   /* padding: 10px; */
   box-sizing: border-box;
@@ -21,6 +21,17 @@
   border-radius: 10px;
   margin: 10px;
   box-shadow: 1px 1px 5px rgb(207, 207, 207);
+}
+.itemCard {
+  /* display: flex; */
+  /* flex-direction: column; */
+  padding-top: 30px;
+}
+
+.friendCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .formElement {
@@ -57,12 +68,6 @@ a {
   font-weight: 300;
 }
 
-.friendCard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .profileName {
   margin: 10px 10px;
 }
@@ -82,6 +87,7 @@ button {
   width: 80%;
   height: 60px;
   box-shadow: 1px 1px 5px rgb(207, 207, 207);
+  font-size: 1.5em;
 }
 
 .matchButton:hover {

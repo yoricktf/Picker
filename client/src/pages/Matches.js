@@ -59,10 +59,12 @@ const Matches = () => {
 
   return (
     <>
-      <div>Matches</div>
+      <h2>Matches</h2>
       {matchedItems.map(match => (
-        <div key={match._id}>
+        <div className='form' key={match._id}>
           <h1>{match.itemName}</h1>
+          <img className='itemPicture' src={match.itemPicture} alt="" />
+          <p>{match.itemDescription}</p>
         </div>
       ))}
       <button onClick={resetMatches}>restart</button>

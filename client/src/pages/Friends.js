@@ -70,30 +70,22 @@ const Friends = () => {
 
   return (
     <>
-      <div>Search for new friends here</div>
-      <input type="text" className='searchInput' value={name} onChange={onChange} />
+      <div className="form">
+        <h2>Search for new friends</h2>
+        <input type="text" className='searchInput' value={name} onChange={onChange} />
+      </div>
+
       {searchResult ?
         (
-
-
-          < div className='possibleFriendCard' >
+          <div className='possibleFriendCard'>
             <img className='profilePicture' src={searchResult.profilePicture} alt="" />
             <h1 className='profileName'>{searchResult.name}</h1>
             <button onClick={addFriend}>add as friend</button>
           </div>
-
-
-
-
-
-
-
-
         ) : (
           <h1></h1>
         )
       }
-
       {
         userFriends.map((friend) => (
           <div className='friendCard' key={friend._id}>
