@@ -7,6 +7,7 @@ const fileUploader = require("../config/cloudinary.config");
 
 router.post('/new', (req, res, next) => {
   const { itemName, itemDescription, itemPicture } = req.body
+  console.log(req.body);
   Item.create({ itemName, itemDescription, itemPicture })
     .then(list => {
       res.status(200).json(list)

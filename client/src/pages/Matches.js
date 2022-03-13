@@ -67,7 +67,7 @@ const Matches = () => {
           <p>{match.itemDescription}</p>
         </div>
       ))}
-      <button onClick={resetMatches}>restart</button>
+      <button className='matchButton' onClick={resetMatches}>Pick Again</button>
     </>
 
   )

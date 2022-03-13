@@ -6,7 +6,6 @@ const Lists = () => {
   // ----------------------------------security stuff------------------
   const storedToken = localStorage.getItem('authToken')
   const security = { headers: { Authorization: `Bearer ${storedToken}` } }
-
   // --------------------------------------------------------------------
 
   const [lists, setLists] = useState([])

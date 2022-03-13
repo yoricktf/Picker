@@ -12,22 +12,22 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/user', (req, res, next) => {
-  console.log('this one', req.body)
-
+  // console.log('this one', req.body)
   User.findById(req.body._id)
     .populate('friends')
     .then(user => {
       // console.log('working????????', user.friends)
       res.status(200).json(user.friends)
     })
+    .catch(err => next(err))
 })
 
 
 router.post('/profile', (req, res, next) => {
-  console.log('===============', req.body);
+  // console.log('===============', req.body);
   User.findById(req.body.user._id)
     .then(user => {
-      console.log('-------------', user);
+      // console.log('-------------', user);
       res.status(200).json(user)
     })
 })
@@ -38,20 +38,12 @@ router.post('/addFriend', (req, res, next) => {
   const currentUserId = req.body.user._id
   User.findByIdAndUpdate(currentUserId, { $push: { friends: searchResult } }, { new: true })
     .then(user => {
-
       res.status(200).json(user.friends)
       // console.log(user)
     })
     .catch(err => next(err))
   // console.log('add friend route triggered')
 })
-
-
-
-
-
-
-
 
 
 

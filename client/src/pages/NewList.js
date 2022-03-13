@@ -23,7 +23,7 @@ const NewList = () => {
     event.preventDefault()
     axios.post('/items/new', { itemName, itemDescription, itemPicture }, security)
       .then(response => {
-        // console.log(response.data)
+        console.log('---------------------', response.data)
         setItemsArray([...itemsArray, response.data])
         // itemsArray.push(response)
       })
@@ -49,7 +49,7 @@ const NewList = () => {
     service
       .uploadImage(uploadData)
       .then(response => {
-        // console.log("response is: ", response);
+        console.log("response is: ", response);
         // response carries "secure_url" which we can use to update the state
         setItemPicture(response.secure_url);
       })
@@ -132,7 +132,7 @@ const NewList = () => {
       <div>
 
         <form className='form' onSubmit={listNew}>
-          <h1>Add New List</h1>
+          <h1>Make New List</h1>
           <div className='formElement'>
             <label htmlFor="listName">&emsp; &ensp; &ensp;List Name: </label>
             <input

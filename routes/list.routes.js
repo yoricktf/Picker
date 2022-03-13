@@ -20,12 +20,12 @@ router.post('/new', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.get('/specific', (req, res, next) => {
-  List.findById()
-    .then(list => {
-      res.status(200).json(list)
-    })
-})
+// router.get('/specific', (req, res, next) => {
+//   List.findById()
+//     .then(list => {
+//       res.status(200).json(list)
+//     })
+// })
 
 
 

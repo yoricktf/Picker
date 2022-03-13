@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../context/auth'
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const Friends = () => {
   // ----------------------------------security stuff------------------
@@ -15,6 +15,7 @@ const Friends = () => {
   const [userFriends, setAllUsers] = useState([])
   const { id } = useParams()
   const listId = id
+  // const navigate = useNavigate()
   let searchResult;
 
 
@@ -43,6 +44,8 @@ const Friends = () => {
       .then(usersFriends => {
         // console.log(updatedUser)
         setUsersFriends(usersFriends.data)
+        // navigate('/Lists/:id/friends')
+        window.location.reload(true);
       })
   }
 
@@ -61,13 +64,6 @@ const Friends = () => {
     }
   }
 
-
-  // <div className="userCard">
-  //   <h1>{searchResult.name}</h1>
-  //   <button onClick={addFriend}>add as friend</button>
-  // </div>
-
-
   return (
     <>
       <div className="form">
@@ -80,7 +76,8 @@ const Friends = () => {
           <div className='possibleFriendCard'>
             <img className='profilePicture' src={searchResult.profilePicture} alt="" />
             <h1 className='profileName'>{searchResult.name}</h1>
-            <button onClick={addFriend}>add as friend</button>
+            <div onClick={addFriend} className='circleButton'><h1 className='plus'>+</h1></div>
+            {/* <button onClick={addFriend}>add as friend</button> */}
           </div>
         ) : (
           <h1></h1>
